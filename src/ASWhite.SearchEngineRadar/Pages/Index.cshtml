@@ -1,0 +1,39 @@
+﻿@page
+@using ASWhite.SearchEngineRadar.Core
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<div class="text-center">
+    <div>
+        <form>
+            <p>
+                <input type="text" asp-for="Keyword"/>
+                <input type="text" asp-for="WebAddress" />
+                <input type="submit" value="Scan" />
+                <div>@Model.Notification</div>
+            </p>
+        </form>
+    </div>
+    <div class="search-engine-container">
+        @foreach (var result in Model.SearchResults)
+        {
+            string searchEngineName = result.SearchEngineName.Replace("SearchEngine", "", StringComparison.OrdinalIgnoreCase);
+            <div class="search-engine-col">
+                <span class="search-engine-name">@searchEngineName</span>
+                @if (result.Indices.Any())
+                {                    
+                    @foreach (var index in result.Indices)
+                    {
+                        <span class="search-result">@index</span>
+                    }                    
+                }
+                else
+                {
+                    <span class="no-indices">No results found</span>
+                }
+            </div>
+        }
+    </div>
+</div>

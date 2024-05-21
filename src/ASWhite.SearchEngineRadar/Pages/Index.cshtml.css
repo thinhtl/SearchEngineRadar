@@ -1,0 +1,21 @@
+﻿.search-engine-container {
+    display: flex;
+    flex-direction: row;
+    gap: 100px;
+    justify-content: center;
+}
+
+.search-engine-col {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    width:150px;
+}
+
+.search-engine-name{
+    font-weight: bold;
+}
+
+.search-result{
+
+}
